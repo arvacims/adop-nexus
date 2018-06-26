@@ -47,7 +47,7 @@ mapping.setUserIdAttribute(parsed_args.userIdAttribute)
 mapping.setUserRealNameAttribute(parsed_args.userRealNameAttribute)
 mapping.setEmailAddressAttribute(parsed_args.emailAddressAttribute)
 
-if (parsed_args.map_groups_as_roles) {
+if (parsed_args.map_groups_as_roles == "true") {
     mapping.setLdapGroupsAsRoles(true)
     mapping.setGroupBaseDn(parsed_args.groupBaseDn)
     mapping.setGroupObjectClass(parsed_args.groupObjectClass)
