@@ -1,4 +1,4 @@
-FROM sonatype/nexus3:3.12.1
+FROM sonatype/nexus3:3.13.0
 
 
 ENV LDAP_ENABLED=true \
