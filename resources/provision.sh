@@ -117,4 +117,5 @@ if [ -n "${NEXUS_ADMIN_PASSWORD}" ]
   echo ${NEXUS_ADMIN_PASSWORD} > ${NEXUS_DATA}/current_local_password
 fi
 
+
 printf "\nProvisioning Scripts Completed\n\n"
