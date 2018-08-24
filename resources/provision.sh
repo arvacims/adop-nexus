@@ -104,6 +104,9 @@ DOCKER_REGISTRY_CONFIG="{\"name\":\"$DOCKER_REGISTRY_NAME\",\"http_port\":\"$DOC
 # Setup Docker Registry
 addAndRunScript setup_docker_registry resources/conf/setup_docker_registry.groovy "\${DOCKER_REGISTRY_CONFIG}"
 
+# Setup NPM registry
+addAndRunScript setup_npm_registry resources/conf/setup_npm_registry.groovy "\${NPM_REGISTRY_NAME}"
+
 # Include Legacy URL
 File="${NEXUS_DATA}/etc/nexus.properties"
 Property="org.sonatype.nexus.repository.httpbridge.internal.HttpBridgeModule.legacy=true"
@@ -118,5 +121,10 @@ if [ -n "${NEXUS_ADMIN_PASSWORD}" ]
   echo ${NEXUS_ADMIN_PASSWORD} > ${NEXUS_DATA}/current_local_password
 fi
 
+# Setup anonymous access
+addAndRunScript setup_anonymous resources/conf/setup_anonymous.groovy "\${ALLOW_ANONYMOUS_USERS}"
+
+# Setup additional realms
+addAndRunScript setup-realms resources/conf/setup-realms.groovy
 
 printf "\nProvisioning Scripts Completed\n\n"
