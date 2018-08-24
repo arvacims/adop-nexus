@@ -67,7 +67,7 @@ if [[ -n "${NEXUS_PROXY_HOST}" ]] && [[ -n "${NEXUS_PROXY_PORT}" ]]
   then
   echo "$(date) - Proxy Host: ${NEXUS_PROXY_HOST}"
   echo "$(date) - Proxy Port: ${NEXUS_PROXY_PORT}"
-  remoteProxyArg="{\"with_http_proxy\":\"true\",\"http_proxy_host\":\"${NEXUS_PROXY_HOST}\",\"http_proxy_port\":\"${NEXUS_PROXY_PORT}\"}"	
+  remoteProxyArg="{\"with_http_proxy\":\"true\",\"http_proxy_host\":\"${NEXUS_PROXY_HOST}\",\"http_proxy_port\":\"${NEXUS_PROXY_PORT}\"}"
   addAndRunScript remoteProxy resources/conf/setup_http_proxy.groovy "\${remoteProxyArg}"
 fi
 
@@ -98,11 +98,8 @@ if [ "${LDAP_ENABLED}" = "true" ]
   fi
 fi
 
-# Docker Registry parameters
-DOCKER_REGISTRY_CONFIG="{\"name\":\"$DOCKER_REGISTRY_NAME\",\"http_port\":\"$DOCKER_REGISTRY_HTTP_PORT\",\"https_port\":\"$DOCKER_REGISTRY_HTTPS_PORT\"}"
-
 # Setup Docker Registry
-addAndRunScript setup_docker_registry resources/conf/setup_docker_registry.groovy "\${DOCKER_REGISTRY_CONFIG}"
+addAndRunScript setup_docker_registry resources/conf/setup_docker_registry.groovy
 
 # Setup NPM registry
 addAndRunScript setup_npm_registry resources/conf/setup_npm_registry.groovy "\${NPM_REGISTRY_NAME}"
