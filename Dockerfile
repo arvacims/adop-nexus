@@ -9,7 +9,7 @@ ENV LDAP_ENABLED=true \
     LDAP_URL="" \
     LDAP_PORT=389 \
     LDAP_AUTH_PROTOCOL=ldap \
-    LDAP_AUTH_SCHEME=anonymous \
+    LDAP_AUTH_SCHEME=simple \
     LDAP_USER_EMAIL_ATTRIBUTE=mail \
     LDAP_GROUPS_AS_ROLES=true \
     LDAP_GROUP_BASE_DN=ou=groups \
