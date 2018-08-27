@@ -35,9 +35,9 @@ RUN yum install -y zip unzip
 RUN yum install -y which
 RUN curl -s get.sdkman.io | bash
 RUN source "$HOME/.sdkman/bin/sdkman-init.sh"
-RUN yes | /bin/bash -l -c "sdk install groovy 2.4.15"
+RUN yes | /bin/bash -l -c "sdk install groovy 2.5.2"
 
-ENV PATH="/root/.sdkman/candidates/groovy/2.4.15/bin:${PATH}"
+ENV PATH="/root/.sdkman/candidates/groovy/2.5.2/bin:${PATH}"
 RUN export PATH
 
 COPY resources/nexus.sh /usr/local/bin/
@@ -46,23 +46,23 @@ COPY resources/ /resources/
 COPY resources/conf/grapeConfig.xml /root/.groovy/
 
 
-RUN grape install org.sonatype.nexus nexus-rest-client 3.6.0-02 \
-    && grape install org.sonatype.nexus nexus-rest-jackson2 3.6.0-02 \
-    && grape install org.sonatype.nexus nexus-script 3.6.0-02 \
-    && grape install org.jboss.spec.javax.servlet jboss-servlet-api_3.1_spec 1.0.0.Final \
-    && grape install com.fasterxml.jackson.core jackson-core 2.8.6 \
-    && grape install com.fasterxml.jackson.core jackson-databind 2.8.6 \
-    && grape install com.fasterxml.jackson.core jackson-annotations 2.8.6 \
-    && grape install com.fasterxml.jackson.jaxrs jackson-jaxrs-json-provider 2.8.6 \
-    && grape install org.jboss.spec.javax.ws.rs jboss-jaxrs-api_2.0_spec 1.0.1.Beta1 \
-    && grape install org.jboss.spec.javax.annotation jboss-annotations-api_1.2_spec 1.0.0.Final \
+RUN grape install org.sonatype.nexus nexus-rest-client 3.13.0-01 \
+    && grape install org.sonatype.nexus nexus-rest-jackson2 3.13.0-01 \
+    && grape install org.sonatype.nexus nexus-script 3.13.0-01 \
+    && grape install org.jboss.spec.javax.servlet jboss-servlet-api_3.1_spec 1.0.2.Final \
+    && grape install com.fasterxml.jackson.core jackson-core 2.9.6 \
+    && grape install com.fasterxml.jackson.core jackson-databind 2.9.6 \
+    && grape install com.fasterxml.jackson.core jackson-annotations 2.9.6 \
+    && grape install com.fasterxml.jackson.jaxrs jackson-jaxrs-json-provider 2.9.6 \
+    && grape install org.jboss.spec.javax.ws.rs jboss-jaxrs-api_2.0_spec 1.0.1.Final \
+    && grape install org.jboss.spec.javax.annotation jboss-annotations-api_1.2_spec 1.0.2.Final \
     && grape install javax.activation activation 1.1.1 \
     && grape install net.jcip jcip-annotations 1.0 \
-    && grape install org.jboss.logging jboss-logging-annotations 2.0.1.Final \
-    && grape install org.jboss.logging jboss-logging-processor 2.0.1.Final \
-    && grape install com.sun.xml.bind jaxb-impl 2.2.7 \
-    && grape install com.sun.mail javax.mail 1.5.6 \
-    && grape install org.apache.james apache-mime4j 0.6
+    && grape install org.jboss.logging jboss-logging-annotations 2.1.0.Final \
+    && grape install org.jboss.logging jboss-logging-processor 2.1.0.Final \
+    && grape install com.sun.xml.bind jaxb-impl 2.3.0.1 \
+    && grape install com.sun.mail javax.mail 1.6.1 \
+    && grape install org.apache.james apache-mime4j 0.8.2
 
 RUN chmod u+x /usr/local/bin/nexus.sh && chmod u+x /usr/local/bin/provision.sh
 
