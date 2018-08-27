@@ -1,7 +1,13 @@
-nexus:
-  build: .
-  ports:
-   - "8081:8081"
-  environment:
-   - LDAP_ENABLED=false
-   - NEXUS_BASE_URL=http://192.168.59.103:8081
+version: "2.4"
+
+services:
+
+  nexus:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      - "LDAP_ENABLED=false"
+      - "NEXUS_BASE_URL=http://localhost:8081"
+    volumes:
+      - "./sample/init.groovy.d/:/resources/conf/init.groovy.d:ro"

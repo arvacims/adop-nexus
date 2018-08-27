@@ -98,6 +98,11 @@ if [ "${LDAP_ENABLED}" = "true" ]
   fi
 fi
 
+for filename in resources/conf/init.groovy.d/*.groovy; do
+    echo "Adding and running custom script '${filename}' ..."
+    addAndRunScript ${filename##*/} ${filename}
+done
+
 # Include Legacy URL
 File="${NEXUS_DATA}/etc/nexus.properties"
 Property="org.sonatype.nexus.repository.httpbridge.internal.HttpBridgeModule.legacy=true"
