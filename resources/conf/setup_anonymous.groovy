@@ -1,1 +1,1 @@
-security.setAnonymousAccess(Boolean.valueOf(args))
+security.setAnonymousAccess(false)

@@ -99,8 +99,8 @@ if [ "${LDAP_ENABLED}" = "true" ]
 fi
 
 addAndRunScript setup_docker_registry resources/conf/setup_docker_registry.groovy
-addAndRunScript setup_npm_registry resources/conf/setup_npm_registry.groovy "\${NPM_REGISTRY_NAME}"
-addAndRunScript setup_anonymous resources/conf/setup_anonymous.groovy "\${ALLOW_ANONYMOUS_USERS}"
+addAndRunScript setup_npm_registry resources/conf/setup_npm_registry.groovy
+addAndRunScript setup_anonymous resources/conf/setup_anonymous.groovy
 addAndRunScript setup-realms resources/conf/setup-realms.groovy
 
 # Include Legacy URL
