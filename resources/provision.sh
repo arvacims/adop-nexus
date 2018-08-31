@@ -98,10 +98,10 @@ if [ "${LDAP_ENABLED}" = "true" ]
   fi
 fi
 
-addAndRunScript setup_docker_registry resources/conf/setup_docker_registry.groovy
-addAndRunScript setup_npm_registry resources/conf/setup_npm_registry.groovy
-addAndRunScript setup_anonymous resources/conf/setup_anonymous.groovy
-addAndRunScript setup-realms resources/conf/setup-realms.groovy
+for filename in resources/conf/init.groovy.d/*.groovy; do
+    echo "Adding and running custom script '${filename}' ..."
+    addAndRunScript ${filename##*/} ${filename}
+done
 
 # Include Legacy URL
 File="${NEXUS_DATA}/etc/nexus.properties"
