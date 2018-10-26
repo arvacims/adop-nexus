@@ -1,4 +1,4 @@
-FROM sonatype/nexus3:3.13.0
+FROM sonatype/nexus3:3.14.0
 
 
 ENV LDAP_ENABLED=true \
@@ -44,9 +44,9 @@ COPY resources/ /resources/
 COPY resources/conf/grapeConfig.xml /root/.groovy/
 
 
-RUN grape install org.sonatype.nexus nexus-rest-client 3.13.0-01 \
-    && grape install org.sonatype.nexus nexus-rest-jackson2 3.13.0-01 \
-    && grape install org.sonatype.nexus nexus-script 3.13.0-01 \
+RUN grape install org.sonatype.nexus nexus-rest-client 3.14.0-04 \
+    && grape install org.sonatype.nexus nexus-rest-jackson2 3.14.0-04 \
+    && grape install org.sonatype.nexus nexus-script 3.14.0-04 \
     && grape install org.jboss.spec.javax.servlet jboss-servlet-api_3.1_spec 1.0.2.Final \
     && grape install com.fasterxml.jackson.core jackson-core 2.9.6 \
     && grape install com.fasterxml.jackson.core jackson-databind 2.9.6 \
