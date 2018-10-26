@@ -1,10 +1,6 @@
-import org.sonatype.nexus.repository.storage.WritePolicy
-
 privateRepo = "gitlfs-private"
-
-
-println "Try to get repo: $privateRepo"
+println "Looking for repository '$privateRepo' ..."
 if (repository.repositoryManager.get(privateRepo) == null) {
-    println "Add repo: $privateRepo"
+    println "Repository was not found. Adding it ..."
     repository.createGitLfsHosted(privateRepo)
 }
